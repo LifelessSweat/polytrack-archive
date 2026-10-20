@@ -168,7 +168,7 @@
             }
         }, { passive: false });
 
-        // Click interaction
+        // Click and Hover interactions
         versions.forEach((element, index) => {
             element.addEventListener("click", () => {
                 selected = index;
@@ -179,6 +179,12 @@
             // Sync keyboard indexing if the user hovers over an item
             element.addEventListener("mouseenter", () => {
                 selected = index;
+                update();
+            });
+
+            // FIX: Reset selection when mouse leaves the button 
+            element.addEventListener("mouseleave", () => {
+                selected = -1;
                 update();
             });
         });
